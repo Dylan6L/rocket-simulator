@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from integration import integrateGraph
-import ThrustMassCalculators as phy # phy for physics
+import curvecalculator as phy # phy for physics
+import os
 
 # USER DEFINED VARIABLES
 dryMass = 0.737
@@ -12,7 +13,8 @@ burnTime = 3.4
 totalImpulse = 49.6
 propellantMass = 0.06
 engineMass = 0.1044
-thrustmass_curve_file = 'f15curve.csv'
+thrustmass_curve_file = 'data/f15curve.csv'
+print(os.getcwd())
 
 averageThrust = totalImpulse/burnTime # N
 massFlowRate = propellantMass/burnTime # kg/s
@@ -23,7 +25,7 @@ totalImpulse2 = 49.6
 propellantMass2 = 0.06
 engineMass2 = 0.1044
 engine2IgniteTime = 7.59
-thrustmass_curve_file2 = 'f15curve.csv'
+thrustmass_curve_file2 = 'data/f15curve.csv'
 
 
 
@@ -35,6 +37,8 @@ massFlowRate2 = propellantMass2/burnTime2 # kg/s
 
 thrustmass_curve_1 = phy.gen_thrust_curve(thrustmass_curve_file)
 thrustmass_curve_2 = phy.gen_thrust_curve(thrustmass_curve_file2)
+for i in thrustmass_curve_1:
+    print(i)
 
 
 time = np.linspace(0, timeInterval, timeInterval * 1000, False) # Array of numbers from 0 to 13.9

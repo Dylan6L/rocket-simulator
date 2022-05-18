@@ -3,7 +3,7 @@ import csv
 
 def gen_thrust_curve(file_name):
     f15ThrustCurve = []
-    with open('f15curve.csv') as csv_file:
+    with open(file_name) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         first_line = True
         for row in csv_reader:
